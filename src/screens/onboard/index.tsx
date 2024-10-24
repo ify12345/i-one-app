@@ -22,7 +22,7 @@ const DATA = [
     id: 1,
     text: 'Lorem Ipsum Is Simply Dummy',
     primaryText:
-      'v.',
+      'Lorem ipsum dolor sit amet consectetur. Imperdiet vitae sit semper diam non enim. Blandit gravida lacinia uts.',
     image: '../../../assets/images/onboarding_one.png',
   },
   {
