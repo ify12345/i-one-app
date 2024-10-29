@@ -13,7 +13,7 @@ import {
   REGISTER
 } from 'redux-persist'
 import languageReducer from './reducers/language'
-// import authReducer from './reducers/auth'
+import authReducer from './reducers/auth'
 
 const asyncPersistConfig = {
   key: 'main',
@@ -21,10 +21,10 @@ const asyncPersistConfig = {
 }
 
 const persistedLangReducer = persistReducer(asyncPersistConfig, languageReducer)
-// const persistedAuthReducer = persistReducer(asyncPersistConfig, authReducer)
+const persistedAuthReducer = persistReducer(asyncPersistConfig, authReducer)
 const reducers = combineReducers({
   language: persistedLangReducer,
-  // auth: persistedAuthReducer
+  auth: persistedAuthReducer
 })
 
 const store = configureStore({

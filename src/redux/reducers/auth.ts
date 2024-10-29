@@ -1,8 +1,9 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-param-reassign */
+import { login, register } from '@/src/api/auth';
 import { User } from '@/src/types';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {EmailVerification, login, register} from '@/api/auth';
+
 
 
 interface State {
@@ -48,17 +49,17 @@ export const authSlice = createSlice({
         console.log('login payload:', state.user);
         state.isAuthenticated = true;
       });
-    builder
-      .addCase(EmailVerification.pending, state => {
-        state.isAuthenticated = false;
-        state.isVerified = false;
-        state.isPhoneVerified = false;
-      })
-      .addCase(EmailVerification.fulfilled, (state, {payload}) => {
-        state.isAuthenticated = true;
-        state.isVerified = payload.email_verified;
-        state.isPhoneVerified = payload.phone_verified;
-      });
+    // builder
+    //   .addCase(EmailVerification.pending, state => {
+    //     state.isAuthenticated = false;
+    //     state.isVerified = false;
+    //     state.isPhoneVerified = false;
+    //   })
+    //   .addCase(EmailVerification.fulfilled, (state, {payload}) => {
+    //     state.isAuthenticated = true;
+    //     state.isVerified = payload.email_verified;
+    //     state.isPhoneVerified = payload.phone_verified;
+    //   });
   },
 });
 

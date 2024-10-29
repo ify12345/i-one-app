@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 async function AxiosBase() {
-  // Create the Axios instance without Keychain or token handling
+ 
   return Axios.create({
     baseURL: 'https://www.isopportunities.com.au/api',
     headers: {

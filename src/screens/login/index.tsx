@@ -29,6 +29,7 @@ import { Country } from '~types';
 import Loader from '~components/loader';
 import styles from './styles';
 import { login } from '@/src/api/auth';
+import { useAppSelector } from '@/src/redux/store';
 
 const { width } = Dimensions.get('screen');
 
@@ -50,9 +51,9 @@ export default function Login() {
   const navigation = useNavigation<RootStackScreenProps<'Onboard'>['navigation']>();
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(false);
-  
+  const {isAuthenticated, isVerified} = useAppSelector((store) => store.auth)
   const [countryModalVisible, setCountryModalVisible] = useState(false);
-  
+  console.log(isAuthenticated)
 
   function toggleCountryModal() {
     setCountryModalVisible(!countryModalVisible);
@@ -63,8 +64,9 @@ export default function Login() {
     console.log(values);
 
     try {
-      await dispatch(login(values)).unwrap();
+      const response = await dispatch(login(values)).unwrap();
       setLoading(false);
+      Toast.show({ type: 'success', props: { message: response.message} });
       navigation.navigate('BottomTab')
     } catch (err:any) {
       setLoading(false);

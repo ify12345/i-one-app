@@ -1,10 +1,10 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable import/no-dynamic-require */
-import {Dimensions} from 'react-native';
+import {Dimensions, ScrollView, View} from 'react-native';
 import * as yup from 'yup';
 import React, {useState} from 'react';
-import {useTheme} from 'react-native-paper';
+import {Text, useTheme} from 'react-native-paper';
 import CustomButton from '@/src/components/CustomButton';
 import {Formik} from 'formik';
 import {useTranslation} from 'react-i18next';
@@ -17,7 +17,7 @@ import Toast from 'react-native-toast-message';
 import {register} from '@/src/api/auth';
 import Loader from '@/src/components/loader';
 import styles from './styles';
-import type { RejectValue } from '@/src/types/api';
+import type {RejectValue} from '@/src/types/api';
 
 const {width} = Dimensions.get('screen');
 
@@ -56,20 +56,20 @@ export default function SignUp({onSuccessfulRegistration}) {
   });
 
   const signupValidationSchema = yup.object().shape({
-    first_name: yup.string().required(t('First name is required')),
-    last_name: yup.string().required(t('Last name is required')),
-    email: yup.string().email(t('Enter a valid email')).required(t('Email is required')),
+    first_name: yup.string().required('First name is required'),
+    last_name: yup.string().required('Last name is required'),
+    email: yup.string().email('Enter a valid email').required('Email is required'),
     password: yup
       .string()
       .matches(
         /^(?=.*[A-Z])(?=.*[a-z])(?:(?=.*\d)|(?=.*[\W_]))(?!.*\s).{8,}$/,
-        t('Enter a valid password'),
+        'Enter a valid password',
       )
       .required(t('Password is required')),
     password_confirmation: yup
       .string()
-      .oneOf([yup.ref('password')], t('Passwords must match'))
-      .required(t('Confirm Password is required')),
+      .oneOf([yup.ref('password')], 'Passwords must match')
+      .required('Confirm Password is required'),
   });
 
   const handleSubmit = async values => {
@@ -77,19 +77,19 @@ export default function SignUp({onSuccessfulRegistration}) {
     console.log(values);
 
     try {
-      await dispatch(register(values)).unwrap();
+      const response = await dispatch(register(values)).unwrap();
       setLoading(false);
+      Toast.show({type: 'success', props: {message: response.message}});
       onSuccessfulRegistration();
-    } catch (err:any) {
+    } catch (err: any) {
       setLoading(false);
       const errorMessage = err.msg || 'An unexpected error occurred. Please try again.';
       Toast.show({type: 'error', props: {message: errorMessage}});
-
     }
   };
 
   return (
-    <>
+    <ScrollView>
       <Formik
         validationSchema={signupValidationSchema}
         initialValues={{
@@ -134,6 +134,7 @@ export default function SignUp({onSuccessfulRegistration}) {
                 inputComponentStyle={{backgroundColor: colors.background}}
               />
               <InputField
+                password
                 label="Password"
                 error={touched.password && errors.password}
                 errorMessage={errors.password}
@@ -142,7 +143,25 @@ export default function SignUp({onSuccessfulRegistration}) {
                 required
                 inputComponentStyle={{backgroundColor: colors.background}}
               />
+              <View style={{paddingLeft: 20, marginBottom: 10}}>
+                <Text style={{color: passwordCriteria.hasEightChars ? 'green' : 'red'}}>
+                  - At least 8 characters
+                </Text>
+                <Text style={{color: passwordCriteria.hasUpperAndLower ? 'green' : 'red'}}>
+                  - Contains upper and lower case letters
+                </Text>
+                <Text style={{color: passwordCriteria.hasNumberOrSymbol ? 'green' : 'red'}}>
+                  - Contains a number or symbol
+                </Text>
+                <Text style={{color: passwordCriteria.doesNotContainEmail ? 'green' : 'red'}}>
+                  - Does not contain email
+                </Text>
+                <Text style={{color: passwordCriteria.isNotCommonPassword ? 'green' : 'red'}}>
+                  - Is not a common password
+                </Text>
+              </View>
               <InputField
+                password
                 label="Confirm Password"
                 error={touched.password_confirmation && errors.password_confirmation}
                 errorMessage={errors.password_confirmation}
@@ -165,6 +184,6 @@ export default function SignUp({onSuccessfulRegistration}) {
       </Formik>
 
       <Loader visible={loading} />
-    </>
+    </ScrollView>
   );
 }

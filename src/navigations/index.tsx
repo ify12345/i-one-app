@@ -15,16 +15,17 @@ import ResetPassword from '../screens/reset-password';
 import VerificationSuccess from '../screens/verification-succes';
 import BottomTab from './bottomTab';
 import EditBasicInfo from '../screens/edit-basic';
+import {useAppSelector} from '../redux/store';
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
 export default function RootNavigator() {
   // const [loading, setLoading] = useState(true)
-  // const {isAuthenticated, isVerified, user} = useAppSelector(store => store.auth);
+  const {isAuthenticated, isVerified, user} = useAppSelector(store => store.auth);
   // const userRole = user.user?.user_type;
   // console.log(userRole);
 
-  // console.log({isAuthenticated, isVerified})
+  console.log({isAuthenticated, isVerified});
 
   // const dispatch = useAppDispatch()
   // useEffect(() => {
@@ -63,16 +64,22 @@ export default function RootNavigator() {
       screenOptions={{
         headerShown: false,
       }}>
-      <RootStack.Group>
-        <RootStack.Screen name="HomeTab" component={Onboarding} />
-        <RootStack.Screen name="Authentication" component={AuthScreens} />
-        <RootStack.Screen name="ForgotPassword" component={ForgotPassword} />
-        <RootStack.Screen name="ValidateOtp" component={AccountVerification} />
-        <RootStack.Screen name="ResetPassword" component={ResetPassword} />
-        <RootStack.Screen name="VerificationSuccess" component={VerificationSuccess} />
-        <RootStack.Screen name="BottomTab" component={BottomTab} />
-        <RootStack.Screen name="EditBasicInfo" component={EditBasicInfo} />
-      </RootStack.Group>
+      {isAuthenticated && (
+        <RootStack.Group>
+          <RootStack.Screen name="BottomTab" component={BottomTab} />
+        </RootStack.Group>
+      )}
+      {!isAuthenticated && (
+        <RootStack.Group>
+          <RootStack.Screen name="HomeTab" component={Onboarding} />
+          <RootStack.Screen name="Authentication" component={AuthScreens} />
+          <RootStack.Screen name="ForgotPassword" component={ForgotPassword} />
+          <RootStack.Screen name="ValidateOtp" component={AccountVerification} />
+          <RootStack.Screen name="ResetPassword" component={ResetPassword} />
+          <RootStack.Screen name="VerificationSuccess" component={VerificationSuccess} />
+          <RootStack.Screen name="EditBasicInfo" component={EditBasicInfo} />
+        </RootStack.Group>
+      )}
     </RootStack.Navigator>
   );
 }
