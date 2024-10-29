@@ -1,30 +1,27 @@
 import { AxiosResponse } from 'axios';
-import * as Keychain from 'react-native-keychain';
-import { RejectValue } from '~types/api';
+import { RejectValue } from '@/src/types/api';
 
 interface ErrorPayload {
   response: {
     data: {
-      errors: string
-    },
-    status: number
-  }
+      errors: string;
+    };
+    status: number;
+  };
 }
-
 type RejectedWithValue = {
-  rejectWithValue(rejectValue: RejectValue): { payload: RejectValue }
+  rejectWithValue(rejectValue: RejectValue): { payload: RejectValue };
 };
 
 async function apiRequest(asyncFn: Promise<AxiosResponse>, thunkAPI: RejectedWithValue, route?: string) {
   try {
     const { data } = await asyncFn;
 
+    // Token handling logic can go here if needed
     if (route === "auth") {
-      const { data: { token } } = data;
-      if (token) {
-        const key = 'market-assist';
-        await Keychain.setGenericPassword(key, token);
-      }
+      const token = data?.data?.token;
+      console.log("Token fetched:", token);
+      // Optionally, you could store the token in AsyncStorage if needed
     }
 
     return data;
@@ -34,14 +31,11 @@ async function apiRequest(asyncFn: Promise<AxiosResponse>, thunkAPI: RejectedWit
     if (!error?.response) {
       return thunkAPI.rejectWithValue({ msg: "Network Error", status: 500 });
     }
-
     if (error?.response?.status === 500) {
-      return thunkAPI.rejectWithValue({ msg: "Server Error: " + error?.response?.data?.errors, status: 500 });
+      return thunkAPI.rejectWithValue({ msg: "Server Error", status: 500 });
     }
-
-    if (error?.response.status === 401) {
-      // TODO: Implement logout or other handling here
-      // store.dispatch(logout());
+    if (error?.response?.status === 401) {
+      // Optionally handle logout logic if needed
     }
 
     return thunkAPI.rejectWithValue({
@@ -49,6 +43,6 @@ async function apiRequest(asyncFn: Promise<AxiosResponse>, thunkAPI: RejectedWit
       status: error?.response?.status,
     });
   }
-};
+}
 
 export default apiRequest;

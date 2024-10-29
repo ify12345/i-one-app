@@ -14,26 +14,27 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.ehizua.iso"
+      "bundleIdentifier": "com.ehizua.iso",
+       "buildNumber": "1"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.ehizua.iso"
+      "package": "com.ehizua.iso",
+      "versionCode": 3,
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
-      "bundler": "metro",
-      "output": "static",
       "favicon": "./assets/images/favicon.png"
     },
+    "owner": "ify",
     "plugins": [
       "expo-router"
     ],
-    "experiments": {
-      "typedRoutes": true
-    },
     "extra": {
       "eas": {
         "projectId": "3deedb1c-623b-42ea-9cc0-3e635c6bde50"

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
-import { AppDispatch } from "~redux/store";
-import { Break, User } from "~types";
+import { AppDispatch } from "@/src/redux/store";
+import { Break, User } from "@/src/types";
 
 export type AsyncThunkConfig = {
   /** return type for `thunkApi.getState` */
@@ -33,12 +33,12 @@ export enum Status {
   failed = 'failed'
 }
 
-export interface RegisterPayload extends User {
+export interface RegisterPayload {
+  first_name: string;
+  last_name: string;
   email: string;
-  phone_number: string;
   password: string;
-  acceptTexts: boolean;
-  user_type_id: string;
+  password_confirmation:string;
 }
 
 export interface LoginPayload {
