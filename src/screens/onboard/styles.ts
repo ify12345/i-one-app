@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   imgBackground: {
     width: '100%',
-    height: 249,
+    height: 386,
   },
   img: {
     borderRadius: 16,

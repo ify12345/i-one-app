@@ -1,4 +1,4 @@
-import {Animated, Dimensions, View, ImageBackground, TouchableOpacity} from 'react-native';
+import {Animated, Dimensions, View, ImageBackground, TouchableOpacity, FlatList} from 'react-native';
 import React, {useRef, useState} from 'react';
 import SafeAreaScreen from '@/src/components/SafeAreaScreen';
 import {useTheme, Text} from 'react-native-paper';
@@ -13,24 +13,24 @@ import styles from './styles';
 const {width} = Dimensions.get('screen');
 
 const images = [
-  require('@/src/assets/images/onboarding_one.png'),
-  require('@/src/assets/images/onboarding_two.png'),
-];
+  require('@/src/assets/images/onboard-1.png'),
+  require('@/src/assets/images/onboard-2.png'),
+]
 
 const DATA = [
   {
     id: 1,
-    text: 'Lorem Ipsum Is Simply Dummy',
+    text: 'Value added services to students',
     primaryText:
-      'Lorem ipsum dolor sit amet consectetur. Imperdiet vitae sit semper diam non enim. Blandit gravida lacinia uts.',
-    image: '../../../assets/images/onboarding_one.png',
+      'Student Deal is an organisation that works to support international students throughout the lifecycle of their study experience, from application to arrival through to graduation to maximise the quality of their education',
+    image: '../../../assets/images/onboard-1.png',
   },
   {
     id: 2,
-    text: 'Lorem Ipsum Is Simply Dummy',
+    text: 'Achieve your dreams',
     primaryText:
-      'Lorem ipsum dolor sit amet consectetur. Imperdiet vitae sit semper diam non enim. Blandit gravida lacinia uts.',
-    image: '../../../assets/images/onboarding_one.png',
+      'Our mission is to help you achieve your academic and career goals with unparalleled support and services.',
+    image: '../../../assets/images/onboard-2.png',
   },
 ];
 

@@ -1,6 +1,6 @@
-import {CompositeScreenProps, NavigatorScreenParams} from '@react-navigation/native';
+import {CompositeScreenProps} from '@react-navigation/native';
 import {StackScreenProps} from '@react-navigation/stack';
-import {AccountType, Schedule, Service} from '~types';
+import {AccountType, Schedule, Service} from '@/src/types';
 
 export type RootStackParamList = {
   Onboard: undefined;
@@ -54,22 +54,11 @@ export type ProfileStackParamList = {
   ChangePassword: undefined;
 };
 
-export type DrawerParamList = {
-  HomeStack: NavigatorScreenParams<HomeStackParamList>;
-  ProfileStack: NavigatorScreenParams<ProfileStackParamList>;
-  ScheduleStack: NavigatorScreenParams<ScheduleStackParamList>;
-  Payment: undefined;
-  Branding: undefined;
-};
+
 
 export type RootStackScreenProps<T extends keyof RootStackParamList> = StackScreenProps<
   RootStackParamList,
   T
->;
-
-export type DrawerStackScreenProps<T extends keyof DrawerParamList> = CompositeScreenProps<
-  DrawerScreenProps<DrawerParamList, T>,
-  RootStackScreenProps<keyof RootStackParamList>
 >;
 
 export type HomeStackScreenProps<T extends keyof HomeStackParamList> = CompositeScreenProps<

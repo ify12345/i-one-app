@@ -17,7 +17,7 @@ import Toast from 'react-native-toast-message';
 import {register} from '@/src/api/auth';
 import Loader from '@/src/components/loader';
 import styles from './styles';
-import type {RejectValue} from '@/src/types/api';
+import type {RegisterPayload, RejectValue} from '@/src/types/api';
 
 const {width} = Dimensions.get('screen');
 
@@ -71,22 +71,43 @@ export default function SignUp({onSuccessfulRegistration}) {
       .oneOf([yup.ref('password')], 'Passwords must match')
       .required('Confirm Password is required'),
   });
-
-  const handleSubmit = async values => {
+  
+  const submit = (values) => {
+    const payload: RegisterPayload = { values };
+  
+    console.log('submitting values,', payload);
     setLoading(true);
-    console.log(values);
-
-    try {
-      const response = await dispatch(register(values)).unwrap();
-      setLoading(false);
-      Toast.show({type: 'success', props: {message: response.message}});
-      onSuccessfulRegistration();
-    } catch (err: any) {
-      setLoading(false);
-      const errorMessage = err.msg || 'An unexpected error occurred. Please try again.';
-      Toast.show({type: 'error', props: {message: errorMessage}});
-    }
+  
+    dispatch(register(payload))
+      .unwrap()
+      .then((response) => {
+        setLoading(false);
+  
+        // Display success toast
+        Toast.show({
+          type: 'success',
+          props: { message: response.message || 'Registration successful' },
+        });
+  
+        onSuccessfulRegistration();
+      })
+      .catch((err) => {
+        setLoading(false);
+  
+        // Prioritize error.response?.data
+        const errorMessage =
+          err?.msg || err?.response?.data?.detail || err?.response?.data?.message || 'An error occurred during registration';
+  
+        console.error('Error:', err);
+  
+        // Display error toast
+        Toast.show({
+          type: 'error',
+          props: { message: errorMessage },
+        });
+      });
   };
+  
 
   return (
     <ScrollView>
@@ -99,7 +120,7 @@ export default function SignUp({onSuccessfulRegistration}) {
           password: '',
           password_confirmation: '',
         }}
-        onSubmit={handleSubmit}>
+        onSubmit={values => submit(values)}>
         {({touched, handleChange, handleSubmit, errors, isValid, values}) => {
           const passwordCriteria = checkPasswordCriteria(values.password, values.email);
           return (
@@ -174,7 +195,7 @@ export default function SignUp({onSuccessfulRegistration}) {
               <CustomButton
                 primary
                 title="Continue"
-                onPress={handleSubmit}
+                onPress={() => handleSubmit()}
                 disabled={!isValid}
                 style={styles.createBtn}
               />

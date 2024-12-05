@@ -12,14 +12,17 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.ehizua.iso",
-       "buildNumber": "1"
+      "buildNumber": "1"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.ehizua.iso",
@@ -33,7 +36,11 @@
     },
     "owner": "ify",
     "plugins": [
-      "expo-router"
+      "expo-router",
+      "expo-build-properties",
+      "expo-font",
+      "expo-localization",
+      "expo-secure-store"
     ],
     "extra": {
       "eas": {

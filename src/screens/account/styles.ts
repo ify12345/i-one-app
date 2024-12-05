@@ -48,7 +48,13 @@ const styles = StyleSheet.create({
     color:'white',
     width:122,
     
-  }
+  },
+  link:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center',
+    alignSelf:'center'
+  },
 })
 
 export default styles

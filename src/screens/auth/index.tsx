@@ -32,7 +32,6 @@ export default function AuthScreens({navigation}: RootStackScreenProps<'Authenti
 
   return (
     <SafeAreaScreen style={styles.screen}>
-      
       <ImageBackground
         resizeMode="cover"
         source={require('@/src/assets/images/logo_1.png')}
@@ -44,8 +43,7 @@ export default function AuthScreens({navigation}: RootStackScreenProps<'Authenti
             Create An Account
           </Text>
           <Text variant="titleSmall" style={{textAlign: 'center'}}>
-            Lorem ipsum dolor sit amet consectetur. Imperdiet vitae sit semper diam non enim.
-            Blandit gravida lacinia uts.
+            Sign up to get exclusive job updates!
           </Text>
         </View>
       )}
@@ -55,8 +53,7 @@ export default function AuthScreens({navigation}: RootStackScreenProps<'Authenti
             Welcome Back
           </Text>
           <Text variant="titleSmall" style={{textAlign: 'center'}}>
-            Lorem ipsum dolor sit amet consectetur. Imperdiet vitae sit semper diam non enim.
-            Blandit gravida lacinia uts.
+            Enter your credentials to access your account
           </Text>
         </View>
       )}
@@ -78,7 +75,9 @@ export default function AuthScreens({navigation}: RootStackScreenProps<'Authenti
             justifyContent: 'center',
             width: '50%',
           }}>
-          <Text variant="bodyMedium" style={{color: selected === 1 ? '#155988' : '#A9AABD'}}>Sign up </Text>
+          <Text variant="bodyMedium" style={{color: selected === 1 ? '#155988' : '#A9AABD'}}>
+            Sign up{' '}
+          </Text>
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => selectedButton(2)}
@@ -89,14 +88,16 @@ export default function AuthScreens({navigation}: RootStackScreenProps<'Authenti
             gap: 8,
             // borderBottomWidth: 1,
             borderBottomWidth: selected === 2 ? 2 : 0,
-            
+
             paddingHorizontal: 20,
             paddingVertical: 8,
             // borderRadius: 6,
             justifyContent: 'center',
             width: '50%',
           }}>
-          <Text variant="bodyMedium" style={{color: selected === 2 ? '#155988' : '#A9AABD'}}>Sign In</Text>
+          <Text variant="bodyMedium" style={{color: selected === 2 ? '#155988' : '#A9AABD'}}>
+            Sign In
+          </Text>
         </TouchableOpacity>
       </View>
       <KeyboardAvoidingView style={styles.fullView} behavior="height">

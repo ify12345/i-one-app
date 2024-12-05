@@ -12,21 +12,19 @@ import * as yup from 'yup';
 import React, { useState } from 'react';
 import SafeAreaScreen from '@/src/components/SafeAreaScreen';
 import { useTheme, Text } from 'react-native-paper';
-import CustomButton from '~components/CustomButton';
+import CustomButton from '@/src/components/CustomButton';
 import { Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
 import { useNavigation } from '@react-navigation/native';
-import { RootStackScreenProps } from '~types/navigation';
-import { Colors } from '~config/colors';
+import { RootStackScreenProps } from '@/src/types/navigation';
+import { Colors } from '@/src/config/colors';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import InputField from '~components/InputField';
-import { useAppDispatch } from '~redux/store';
+import InputField from '@/src/components/InputField';
+import { useAppDispatch } from '@/src/redux/store';
 import Toast from 'react-native-toast-message';
-import CountryCodeData from '~mocks/country-codes';
-import CountryCodeModal from '~components/modals/CountryCodeModal';
-import { Country } from '~types';
 
-import Loader from '~components/loader';
+
+import Loader from '@/src/components/loader';
 import styles from './styles';
 import { login } from '@/src/api/auth';
 import { useAppSelector } from '@/src/redux/store';
@@ -58,24 +56,42 @@ export default function Login() {
   function toggleCountryModal() {
     setCountryModalVisible(!countryModalVisible);
   }
-
-  const handleSubmit = async values => {
+  const submit = (values) => {
+    const payload: LoginPayload = { values };
+  
+    console.log('submitting values,', payload);
     setLoading(true);
-    console.log(values);
-
-    try {
-      const response = await dispatch(login(values)).unwrap();
-      setLoading(false);
-      Toast.show({ type: 'success', props: { message: response.message} });
-      navigation.navigate('BottomTab')
-    } catch (err:any) {
-      setLoading(false);
-      const errorMessage = err.msg || 'An unexpected error occurred. Please try again.';
-      Toast.show({type: 'error', props: {message: errorMessage}});
-
-    }
+  
+    dispatch(login(payload))
+      .unwrap()
+      .then((response) => {
+        setLoading(false);
+  
+        // Display success toast
+        Toast.show({
+          type: 'success',
+          props: { message: response.message || 'Login successful' },
+        });
+  
+        navigation.navigate('BottomTab')
+      })
+      .catch((err) => {
+        setLoading(false);
+  
+        // Prioritize error.response?.data
+        const errorMessage =
+          err?.msg || err?.response?.data?.detail || err?.response?.data?.message || 'An error occurred during registration';
+  
+        console.error('Error:', err);
+  
+        // Display error toast
+        Toast.show({
+          type: 'error',
+          props: { message: errorMessage },
+        });
+      });
   };
-
+  
   const loginValidationSchema = yup.object().shape({
     email: yup.string().email(t('Enter a valid email')).required(t('Email is required')),
     password: yup
@@ -96,7 +112,7 @@ export default function Login() {
         <Formik
           validationSchema={loginValidationSchema}
           initialValues={{ email: '', password: '' }}
-          onSubmit={handleSubmit}>
+          onSubmit={values => submit(values)}>
           {({ touched, handleChange, handleSubmit, errors, isValid, values }) => (
             <>
               <InputField

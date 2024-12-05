@@ -67,6 +67,7 @@ export default function RootNavigator() {
       {isAuthenticated && (
         <RootStack.Group>
           <RootStack.Screen name="BottomTab" component={BottomTab} />
+          <RootStack.Screen name="EditBasicInfo" component={EditBasicInfo} />
         </RootStack.Group>
       )}
       {!isAuthenticated && (
@@ -77,7 +78,7 @@ export default function RootNavigator() {
           <RootStack.Screen name="ValidateOtp" component={AccountVerification} />
           <RootStack.Screen name="ResetPassword" component={ResetPassword} />
           <RootStack.Screen name="VerificationSuccess" component={VerificationSuccess} />
-          <RootStack.Screen name="EditBasicInfo" component={EditBasicInfo} />
+      
         </RootStack.Group>
       )}
     </RootStack.Navigator>

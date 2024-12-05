@@ -74,14 +74,14 @@ const fontConfig: MD3Typescale = {
     fontWeight: '400',
     letterSpacing: 0.5,
     lineHeight: 28,
-    fontSize: 10
+    fontSize: 14
   },
   titleMedium: {
     fontFamily: 'Avenir-Medium',
     fontWeight: '500',
     letterSpacing: 0,
-    lineHeight: 20,
-    fontSize: 15
+    lineHeight: 42,
+    fontSize: 22
   },
   titleLarge: {
     fontFamily: 'Nunito_700Bold',

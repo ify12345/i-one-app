@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
   top:{
     flexDirection:'row',
     justifyContent:'space-between',
-    alignItems:'center'
+    alignItems:'center',
+    paddingVertical:24
   },
   imgBackground: {
     width: 200,
@@ -38,7 +39,51 @@ const styles = StyleSheet.create({
     color:'white',
     width:212,
     
-  }
+  },
+
+
+  img: {
+    resizeMode: 'contain',
+  },
+  serviceList: {
+    padding: 16,
+  },
+  serviceItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 16,
+    padding: 12,
+    borderRadius: 8,
+    backgroundColor: '#f8f9fa',
+  },
+  serviceIcon: {
+    width: 40,
+    height: 40,
+    marginRight: 12,
+    borderRadius: 8,
+  },
+  serviceName: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    flex: 1,
+  },
+  serviceFee: {
+    fontSize: 14,
+    color: '#6c757d',
+  },
+  emptyState: {
+    alignItems: 'center',
+    marginTop: 50,
+  },
+  emptyImage: {
+    width: 200,
+    height: 200,
+  },
+  emptyText: {
+    marginTop: 16,
+    fontSize: 16,
+    color: '#6c757d',
+  },
 })
 
 export default styles

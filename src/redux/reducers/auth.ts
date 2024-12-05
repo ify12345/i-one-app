@@ -1,6 +1,6 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-param-reassign */
-import { login, register } from '@/src/api/auth';
+import { getProfile, getServices, login, register } from '@/src/api/auth';
 import { User } from '@/src/types';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
@@ -8,6 +8,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 interface State {
   user: User;
+  // profile: object;
   isAuthenticated: boolean;
   isVerified: boolean;
   isPhoneVerified: boolean;
@@ -15,6 +16,8 @@ interface State {
 
 const initialState: State = {
   user: {},
+  profile:{},
+  services:{},
   isAuthenticated: false,
   isVerified: false,
   isPhoneVerified: false,
@@ -37,18 +40,26 @@ export const authSlice = createSlice({
       state.user = payload;
       console.log('payload:', payload);
 
-      state.isAuthenticated = true;
+      // state.isAuthenticated = true;
     });
     builder
       .addCase(login.pending, state => {
         state.isAuthenticated = false;
         state.isVerified = false;
       })
-      .addCase(login.fulfilled, (state, {payload}) => {
+      .addCase(login.fulfilled, (state, { payload }) => {
         state.user = payload;
-        console.log('login payload:', state.user);
+        state.isVerified = true;
         state.isAuthenticated = true;
-      });
+      })
+      .addCase(getProfile.fulfilled, (state, { payload }) => {
+        state.profile = payload;
+    
+      })
+      .addCase(getServices.fulfilled, (state, { payload }) => {
+        state.services = payload;
+  
+      })
     // builder
     //   .addCase(EmailVerification.pending, state => {
     //     state.isAuthenticated = false;
