@@ -19,6 +19,7 @@ export default function BenefitScreen() {
         />
         <Fontisto name="bell" size={24} color="black" />
       </View>
+      
       <View style={{flexDirection: 'row', gap: 5}}>
         <View style={styles.service}>
           <ImageBackground

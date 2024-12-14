@@ -10,7 +10,7 @@ import {Colors} from '@/src/config/colors';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import styles from './styles';
 
-const {width} = Dimensions.get('screen');
+const {width,height} = Dimensions.get('screen');
 
 const images = [
   require('@/src/assets/images/onboard-1.png'),
@@ -40,6 +40,7 @@ export default function Onboard() {
   const {t} = useTranslation('onboarding');
   const scrollX = useRef(new Animated.Value(0)).current;
   const flatListRef = useRef<FlatList>(null);
+
   const [activeIndex, setActiveIndex] = useState<number>(0);
 
   const navigation = useNavigation<RootStackScreenProps<'Onboard'>['navigation']>();
@@ -91,10 +92,12 @@ export default function Onboard() {
         renderItem={({item, index}) => {
           const {text, primaryText} = item;
           return (
-            <View style={{width: width - 1,  flex:1,
+            <View style={{width: width - 1,
               justifyContent:'space-between',
-              gap:5}}>
-              <View style={{backgroundColor: 'white', paddingVertical: 2, paddingHorizontal: 24,}}>
+            }}>
+              <View>
+
+              <View style={{backgroundColor: 'white', paddingVertical: 2, paddingHorizontal: 24,height:height*0.4}}>
                 <ImageBackground
                   resizeMode="cover"
                   source={images[index]}
@@ -120,6 +123,7 @@ export default function Onboard() {
                   );
                 })}
               </View>
+              </View>
 
               <View style={styles.imgOverlay}>
                 <Text
@@ -136,7 +140,6 @@ export default function Onboard() {
 
               <View
                 style={{
-                  justifyContent: 'space-between',
                   paddingBottom: bottom,
                   paddingHorizontal: 24,
                   gap: 5,

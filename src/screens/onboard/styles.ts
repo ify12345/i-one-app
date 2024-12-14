@@ -3,15 +3,12 @@ import {Colors} from '@/src/config/colors';
 
 const styles = StyleSheet.create({
   screen: {
-    paddingTop: 54,
-    flex:1,
-    justifyContent:'space-between',
-    gap:5
-    
+    paddingBottom:24
   },
   imgBackground: {
     width: '100%',
-    height: 386,
+    height: '100%',
+    resizeMode:'contain'
   },
   img: {
     borderRadius: 16,
@@ -23,15 +20,15 @@ const styles = StyleSheet.create({
   },
   imgOverlay: {
     flexDirection: 'column',
-    gap: 20,
+    gap: 10,
     paddingHorizontal:24
   },
   indicatorWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
-    marginTop: 28,
-    marginBottom: 25,
+    marginTop: 18,
+
   },
   indicator: {
     width: 16,
