@@ -81,7 +81,7 @@ const fontConfig: MD3Typescale = {
     fontWeight: '500',
     letterSpacing: 0,
     lineHeight: 42,
-    fontSize: 22
+    fontSize: 15
   },
   titleLarge: {
     fontFamily: 'Nunito_700Bold',

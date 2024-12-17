@@ -16,6 +16,8 @@ import VerificationSuccess from '../screens/verification-succes';
 import BottomTab from './bottomTab';
 import EditBasicInfo from '../screens/edit-basic';
 import {useAppSelector} from '../redux/store';
+import Search from '../screens/search';
+import Notifications from '../screens/notifications';
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
@@ -68,6 +70,8 @@ export default function RootNavigator() {
         <RootStack.Group>
           <RootStack.Screen name="BottomTab" component={BottomTab} />
           <RootStack.Screen name="EditBasicInfo" component={EditBasicInfo} />
+          <RootStack.Screen name="Search" component={Search} />
+          <RootStack.Screen name="Notification" component={Notifications} />
         </RootStack.Group>
       )}
       {!isAuthenticated && (

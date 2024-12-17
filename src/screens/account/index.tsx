@@ -1,6 +1,6 @@
-import {ScrollView, View} from 'react-native';
+import {Modal, ScrollView, View} from 'react-native';
 import {Text, useTheme} from 'react-native-paper';
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import SafeAreaScreen from '@/src/components/SafeAreaScreen';
 import CustomButton from '@/src/components/CustomButton';
 import {TouchableOpacity} from 'react-native-gesture-handler';
@@ -9,6 +9,7 @@ import {useNavigation} from '@react-navigation/native';
 import {persistor, useAppDispatch, useAppSelector} from '@/src/redux/store';
 import {logout} from '@/src/redux/reducers/auth';
 import {getProfile} from '@/src/api/auth';
+import TopBar from '@/src/components/TopBar';
 import styles from './styles';
 
 export default function AccountScreen() {
@@ -22,6 +23,8 @@ export default function AccountScreen() {
 
   const {profile} = useAppSelector(state => state.auth);
 
+  const [showModal, setShowModal] = useState(false);
+
   console.log('info', profile);
 
   function signOut(payload) {
@@ -31,6 +34,7 @@ export default function AccountScreen() {
   }
   return (
     <SafeAreaScreen style={styles.screen}>
+      <TopBar/>
       <ScrollView>
         <Text variant="titleLarge" style={{color: 'black'}}>
           My Profile
@@ -100,7 +104,7 @@ export default function AccountScreen() {
             </Text>
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.link} onPress={() => signOut()}>
+        <TouchableOpacity style={styles.link}  onPress={() => setShowModal(true)}>
           <View style={{flexDirection: 'row', alignItems: 'center', gap: 8}}>
             <Text variant="labelSmall" style={{color: colors.error}}>
               Log out
@@ -108,6 +112,36 @@ export default function AccountScreen() {
           </View>
         </TouchableOpacity>
       </ScrollView>
+      <Modal
+          transparent
+          visible={showModal}
+          animationType="fade"
+          onRequestClose={() => setShowModal(false)}>
+          <View style={styles.modalOverlay}>
+            <View style={styles.modalContainer}>
+              <Text variant="titleMedium" style={{color: 'black', marginBottom: 16}}>
+                Are you sure you want to log out?
+              </Text>
+              <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                <CustomButton
+                  onPress={() => setShowModal(false)} // Cancel
+                  title="Cancel"
+                  style={[styles.button, {backgroundColor: Colors.paleGreen}]}
+                  titleStyle={{color: 'white'}}
+                />
+                <CustomButton
+                  onPress={() => {
+                    setShowModal(false); // Close modal
+                    signOut(); // Perform logout
+                  }}
+                  title="Log out"
+                  style={[styles.button, {backgroundColor: colors.error}]}
+                  titleStyle={{color: 'white'}}
+                />
+              </View>
+            </View>
+          </View>
+        </Modal>
     </SafeAreaScreen>
   );
 }

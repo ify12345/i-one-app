@@ -28,21 +28,13 @@ const styles = StyleSheet.create({
     marginTop: 4
   },
   tabBar: {
-    elevation: 2,
-    shadowOpacity: 0.2,
-    shadowRadius: 5,
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
     flexDirection: 'row',
     alignItems:'center',
     justifyContent: 'space-evenly',
     paddingVertical: 15,
-    paddingBottom: Platform.OS === 'ios' ? 24 : 8.5,
-    marginBottom: Platform.OS === 'ios' ? 43 : 10,
-    marginHorizontal: Platform.OS === 'ios' ? 16 : 8.5,
-    borderRadius: 18
+    paddingBottom: Platform.OS === 'ios' ? 14 : 8.5,
+    marginBottom: Platform.OS === 'ios' ? 23 : 10,
+    marginHorizontal: Platform.OS === 'ios' ? 12 : 8.5,
   },
   tabItem: {
     alignSelf: 'center',

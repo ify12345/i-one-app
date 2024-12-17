@@ -8,7 +8,9 @@ const styles = StyleSheet.create({
   imgBackground: {
     width: '100%',
     height: '100%',
-    resizeMode:'contain'
+    resizeMode:'contain',
+    // aspectRatio:1,
+    alignSelf:'center'
   },
   img: {
     borderRadius: 16,

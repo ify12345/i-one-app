@@ -31,10 +31,18 @@ const styles = StyleSheet.create({
   
   },
   imgBackground2:{
-    width:60,
-    height:60
+    width:97,
+    height:97,
+    resizeMode:'cover'
   },
   btn:{
+   
+    backgroundColor: Colors.paleGreen,
+    color:'white',
+    width:122,
+    
+  },
+  btn2:{
     backgroundColor:"#FF7300",
     color:'white',
     width:122,

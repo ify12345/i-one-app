@@ -99,7 +99,7 @@ export default function Onboard() {
 
               <View style={{backgroundColor: 'white', paddingVertical: 2, paddingHorizontal: 24,height:height*0.4}}>
                 <ImageBackground
-                  resizeMode="cover"
+                
                   source={images[index]}
                   style={styles.imgBackground}
                   imageStyle={styles.img}

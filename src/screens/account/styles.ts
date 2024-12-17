@@ -53,7 +53,30 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     justifyContent:'space-between',
     alignItems:'center',
-    alignSelf:'center'
+    alignSelf:'center',
+    paddingVertical:21
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalContainer: {
+    width: '80%',
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 20,
+    alignItems: 'center',
+    elevation: 5,
+  },
+  button: {
+    flex: 1,
+    marginHorizontal: 5,
+    borderRadius: 5,
+    paddingVertical: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 })
 
