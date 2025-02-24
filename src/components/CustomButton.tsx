@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import { StyleProp, StyleSheet, TextStyle, TouchableOpacity, TouchableOpacityProps, View, ViewStyle } from 'react-native'
 import React from 'react'
-import { LinearGradient } from 'expo-linear-gradient'
 import { useTheme, Text } from 'react-native-paper';
 import Spinner from '@/src/components/Spinner';
 import { Colors } from '@/src/config/colors';
@@ -54,7 +53,7 @@ export default function CustomButton({
     } else if (isGoogleBtn) {
       textColor = colors.onPrimaryContainer
     } else {
-      textColor = colors.onSecondaryContainer
+      textColor = colors.onPrimaryContainer
     }
     return (
       <Text
@@ -118,7 +117,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor:'#27B2C9'
+    backgroundColor:'#00FF94',
+    borderColor: Colors.paleGreen
   },
   content: {
     display: 'flex',

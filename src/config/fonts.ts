@@ -57,17 +57,17 @@ const fontConfig: MD3Typescale = {
   },
   bodyMedium: {
     fontFamily: 'Inter_400Regular',
-    fontWeight: '400',
+    fontWeight: '300',
     letterSpacing: 0,
-    lineHeight: 20,
-    fontSize: 20
+    lineHeight: 27.2,
+    fontSize: 17
   },
   bodyLarge: {
     fontFamily: 'Nunito_700Bold',
-    fontWeight: '800',
+    fontWeight: '500',
     letterSpacing: 0,
-    lineHeight: 21,
-    fontSize: 14
+    lineHeight: 22,
+    fontSize: 20
   },
   titleSmall: {
     fontFamily: 'Nunito',

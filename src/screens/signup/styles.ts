@@ -1,67 +1,80 @@
-import {StyleSheet} from 'react-native'
-import { Colors } from '@/src/config/colors'
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import {StyleSheet} from 'react-native';
+import {Colors} from '@/src/config/colors';
 
 const styles = StyleSheet.create({
   screen: {
-    paddingTop: 54,
-    backgroundColor: Colors.seaShell,
-    display: 'flex',
-    flexDirection:'column',
-    alignItems:'center',
-    
+    paddingTop: 34,
+    paddingHorizontal: 30,
   },
   imgBackground: {
     width: 179,
     height: 83,
-    marginBottom: 207
+    marginBottom: 207,
   },
   fullView: {
-    flex: 1
+    flex: 1,
   },
   scrollContent: {
     flexGrow: 1,
   },
-  btnContainer:{
+  name: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  imgContainer: {
+    width: 58,
+    height: 17,
+    resizeMode:'contain',
+    // aspectRatio:1,
+  },
+  img1: {
+    height: '100%',
+    width: '100%',
+    // borderWidth: 2,
+    objectFit:'contain'
+  },
+  btnContainer: {
     paddingTop: 105,
     display: 'flex',
-    flexDirection:'column',
+    flexDirection: 'column',
     gap: 24,
     width: '100%',
-    paddingHorizontal: 21
+    paddingHorizontal: 21,
   },
   loginBtn: {
-    justifyContent:'center',
+    justifyContent: 'center',
     borderColor: 'black',
     borderRadius: 30,
     borderWidth: 1,
-    display:'flex',
+    display: 'flex',
     flexDirection: 'row',
-    alignItems:'center',
-    height: 48
+    alignItems: 'center',
+    height: 48,
   },
   createBtn: {
-    justifyContent:'center',
+    justifyContent: 'center',
     borderColor: 'black',
     // borderRadius: 30,
     height: 48,
-    alignSelf:'flex-end'
+    alignSelf: 'flex-end',
   },
-  title:{
+  title: {
     color: 'black',
-      display:'flex',
-    alignItems:'center',
-    justifyContent:'center',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     textAlign: 'center',
     fontWeight: 400,
     fontSize: 20,
     lineHeight: 20,
-    fontFamily: 'Inter_400Regular'
+    fontFamily: 'Inter_400Regular',
   },
-  loginText:{
+  loginText: {
     fontSize: 15,
     lineHeight: 15,
-    textAlign:'center',
-    marginTop: 30
+    textAlign: 'center',
+    marginTop: 30,
   },
   passwordCriteria: {
     flexDirection: 'row',
@@ -71,10 +84,10 @@ const styles = StyleSheet.create({
   criteriaContainer: {
     borderRadius: 5,
   },
-  criteriaText:{
-    color:'black',
-    marginBottom: 8
-  }
-})
+  criteriaText: {
+    color: 'black',
+    marginBottom: 8,
+  },
+});
 
-export default styles
+export default styles;

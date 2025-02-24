@@ -7,7 +7,7 @@ export type RootStackParamList = {
   Offboard: undefined;
   Login: undefined;
   ProfileSetup: undefined;
-  Register: {account_type: AccountType};
+  Register: undefined;
   AccountVerification: undefined;
   AccountVerificationSuccess: undefined;
   ForgotPassword: undefined;

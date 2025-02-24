@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import {
   Image,
@@ -18,7 +20,8 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
 
 import {Ionicons, Entypo} from '@expo/vector-icons';
-import {Colors} from '~config/colors';
+import { Colors } from '../config/colors';
+
 
 interface Props extends TextInputProps {
   label: string;
@@ -100,9 +103,6 @@ export default function InputField({
             },
             inputComponentStyle,
           ]}>
-          {isEmailInput || keyboardType === 'email-address' ? (
-            <AntDesign name="mail" size={24} color="black" />
-          ) : null}
           <TextInput
             onFocus={() => setBorderColor(colors.primary)}
             accessibilityLabel={label}
@@ -136,7 +136,6 @@ export default function InputField({
             inputComponentStyle,
           ]}>
           <View style={{flexDirection: 'row', alignItems: 'center', gap: 5, flex: 1}}>
-            <SimpleLineIcons name="lock-open" size={24} color="black" />
             <TextInput
               onFocus={() => setBorderColor(colors.primary)}
               accessibilityLabel={label}
@@ -183,16 +182,24 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderRadius: 4,
-    height: 41,
-    paddingHorizontal: 8,
+    height: 52,
+    // paddingHorizontal: 8,
     gap:5,
+    backgroundColor: 'white', // Add a background color if needed
+    shadowColor: '#737373', // The color of the shadow
+    shadowOffset: { width: 0, height: 2 }, // X and Y offset
+    shadowOpacity: 0.3, // Approximate opacity from the hex value (4D = ~30% opacity)
+    shadowRadius: 4, // Blur radius
+    elevation: 4, // For Android (since shadow properties only work on iOS)
+    padding: 10,
+    borderRadius: 8,
     
   },
   input: {
     width: '95%',
     height: '100%',
-    paddingVertical: 11,
+    alignItems: 'center',
+    // paddingVertical: 11,
   },
   inputText: {
     fontFamily: 'Avenir-Regular',

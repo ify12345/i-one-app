@@ -1,3 +1,4 @@
+/* eslint-disable import/newline-after-import */
 import 'react-native-gesture-handler';
 import React, {useCallback, useMemo} from 'react';
 import {useColorScheme, StatusBar} from 'react-native';

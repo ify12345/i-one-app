@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable import/order */
+/* eslint-disable import/no-duplicates */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-nested-ternary */
 /* eslint-disable import/no-dynamic-require */

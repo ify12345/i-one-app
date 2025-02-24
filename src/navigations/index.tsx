@@ -18,6 +18,8 @@ import EditBasicInfo from '../screens/edit-basic';
 import {useAppSelector} from '../redux/store';
 import Search from '../screens/search';
 import Notifications from '../screens/notifications';
+import Login from '../screens/login';
+import SignUp from '../screens/signup';
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
@@ -77,7 +79,8 @@ export default function RootNavigator() {
       {!isAuthenticated && (
         <RootStack.Group>
           <RootStack.Screen name="HomeTab" component={Onboarding} />
-          <RootStack.Screen name="Authentication" component={AuthScreens} />
+          <RootStack.Screen name="Login" component={Login} />
+          <RootStack.Screen name="Register" component={SignUp} />
           <RootStack.Screen name="ForgotPassword" component={ForgotPassword} />
           <RootStack.Screen name="ValidateOtp" component={AccountVerification} />
           <RootStack.Screen name="ResetPassword" component={ResetPassword} />

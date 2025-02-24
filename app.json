@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "iso",
-    "slug": "iso",
+    "name": "i-one",
+    "slug": "i-one",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -17,7 +17,7 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.ehizua.iso",
+      "bundleIdentifier": "com.i-one",
       "buildNumber": "1"
     },
     "android": {
@@ -25,7 +25,7 @@
         "foregroundImage": "./assets/images/icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.ehizua.iso",
+      "package": "com.ione",
       "versionCode": 3,
       "permissions": [
         "android.permission.RECORD_AUDIO"
@@ -44,7 +44,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "3deedb1c-623b-42ea-9cc0-3e635c6bde50"
+        // "projectId": "3deedb1c-623b-42ea-9cc0-3e635c6bde50"
       }
     }
   }

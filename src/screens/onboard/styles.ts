@@ -1,9 +1,21 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {StyleSheet} from 'react-native';
 import {Colors} from '@/src/config/colors';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const styles = StyleSheet.create({
   screen: {
-    paddingBottom:24
+    paddingBottom:24,
+    flexDirection:'column',
+    justifyContent:'space-between'
+  },
+  imgContainer: {
+    width: 100,
+    height: 29,
+    resizeMode:'contain',
+    // aspectRatio:1,
+    alignSelf:'center',
+    marginTop: 93
   },
   imgBackground: {
     width: '100%',
@@ -16,9 +28,11 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   img1: {
-    height: 44,
-    width: 154,
-    alignSelf:'center'
+    height: '100%',
+    width: '100%',
+    alignSelf:'center',
+    // borderWidth: 2,
+    objectFit:'cover'
   },
   imgOverlay: {
     flexDirection: 'column',
@@ -51,8 +65,8 @@ const styles = StyleSheet.create({
     marginRight: 4,
   },
   loginBtn: {
-    borderColor:'#5C5C5C57',
-    borderWidth:1
+    borderColor: Colors.black,
+    borderWidth:2.5
   },
 });
 
