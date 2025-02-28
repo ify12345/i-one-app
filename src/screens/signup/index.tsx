@@ -6,7 +6,7 @@
 import {Dimensions, ImageBackground, ScrollView, View} from 'react-native';
 import * as yup from 'yup';
 import React, {useState} from 'react';
-import {Text, useTheme} from 'react-native-paper';
+import {Text, useTheme, Checkbox} from 'react-native-paper';
 import CustomButton from '@/src/components/CustomButton';
 import {Formik} from 'formik';
 import {useTranslation} from 'react-i18next';
@@ -41,6 +41,8 @@ export default function SignUp() {
   const {colors} = useTheme();
   const {bottom} = useSafeAreaInsets();
   const [countryModalVisible, setCountryModalVisible] = useState(false);
+  const [agreeTerms, setAgreeTerms] = useState(false);
+  const [receiveNewsletter, setReceiveNewsletter] = useState(false);
   const [loading, setLoading] = useState(false);
   const [country, setCountry] = useState<Country>(CountryCodeData[0]);
   const {t} = useTranslation('onboarding');
@@ -77,20 +79,29 @@ export default function SignUp() {
       .string()
       .oneOf([yup.ref('password')], 'Passwords must match')
       .required('Confirm Password is required'),
+    // Ensure the user accepts the terms
+    terms: yup.boolean().oneOf([true], 'You must accept the Terms of Services and Privacy Policy'),
+    // Newsletter is optional, so no validation needed
+    newsletter: yup.boolean(),
   });
 
   const submit = values => {
-    const payload: RegisterPayload = {values};
-
-    console.log('submitting values,', payload);
+    if (!agreeTerms) {
+      Toast.show({
+        type: 'error',
+        props: {message: 'You must agree to the Terms of Services and Privacy Policy'},
+      });
+      return;
+    }
+    console.log(values);
+    
+    const payload: RegisterPayload = {values, receiveNewsletter};
     setLoading(true);
 
     dispatch(register(payload))
       .unwrap()
       .then(response => {
         setLoading(false);
-
-        // Display success toast
         Toast.show({
           type: 'success',
           props: {message: response.message || 'Registration successful'},
@@ -98,27 +109,21 @@ export default function SignUp() {
       })
       .catch(err => {
         setLoading(false);
-
-        // Prioritize error.response?.data
         const errorMessage =
-          err?.msg ||
-          err?.response?.data?.detail ||
-          err?.response?.data?.message ||
-          'An error occurred during registration';
-
-        console.error('Error:', err);
-
-        // Display error toast
-        Toast.show({
-          type: 'error',
-          props: {message: errorMessage},
-        });
+          err?.response?.data?.message || 'An error occurred during registration';
+        Toast.show({type: 'error', props: {message: errorMessage}});
       });
   };
 
   return (
     <SafeAreaScreen style={styles.screen}>
-      <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between',marginTop:52}}>
+      <View
+        style={{
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          marginTop: 52,
+        }}>
         <Text variant="bodyLarge" style={{color: 'black', textAlign: 'center'}}>
           Create An Account
         </Text>
@@ -139,16 +144,17 @@ export default function SignUp() {
             email: '',
             password: '',
             nick_name: '',
-            position:'',
-            location:'',
-            phone:'',
-            password_confirmation: '',
+            position: '',
+            location: '',
+            phone: '',
+            // terms: false,
+            // newsletter: false,
           }}
           onSubmit={values => submit(values)}>
-          {({touched, handleChange, handleSubmit, errors, isValid, values}) => {
+          {({touched, handleChange, handleSubmit, errors, isValid, values, setFieldValue}) => {
             const passwordCriteria = checkPasswordCriteria(values.password, values.email);
             return (
-              <View style={{paddingTop:23}}>
+              <View style={{paddingTop: 23}}>
                 <View style={styles.name}>
                   <InputField
                     label="First Name"
@@ -194,14 +200,14 @@ export default function SignUp() {
                   />
                 </View>
                 <InputField
-                    label="Location"
-                    error={touched.location && errors.location}
-                    errorMessage={errors.location}
-                    onChangeText={handleChange('location')}
-                    placeholder="gbagada"
-                    required
-                    inputComponentStyle={{backgroundColor: colors.background}}
-                  />
+                  label="Location"
+                  error={touched.location && errors.location}
+                  errorMessage={errors.location}
+                  onChangeText={handleChange('location')}
+                  placeholder="gbagada"
+                  required
+                  inputComponentStyle={{backgroundColor: colors.background}}
+                />
                 <InputField
                   label="Email Address"
                   autoCapitalize="none"
@@ -214,7 +220,6 @@ export default function SignUp() {
                   inputComponentStyle={{backgroundColor: colors.background}}
                 />
                 <InputField
-                  
                   label="Phone Number"
                   error={touched.phone && errors.phone}
                   errorMessage={errors.phone}
@@ -250,22 +255,36 @@ export default function SignUp() {
                     - Is not a common password
                   </Text>
                 </View>
-                {/* <InputField
-                  password
-                  label="Confirm Password"
-                  error={touched.password_confirmation && errors.password_confirmation}
-                  errorMessage={errors.password_confirmation}
-                  onChangeText={handleChange('password_confirmation')}
-                  placeholder="Confirm Password"
-                  required
-                  inputComponentStyle={{backgroundColor: colors.background}}
-                /> */}
+                {/* Checkbox Section */}
+                <View>
+                  <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <Checkbox
+                      
+                      status={agreeTerms ? 'checked' : 'unchecked'}
+                      onPress={() => setAgreeTerms(!agreeTerms)}
+                    />
+                    <Text variant="labelSmall" style={{marginLeft: 8}}>
+                      By clicking this, I agree to the Terms of Services and Privacy Policy
+                    </Text>
+                  </View>
+                  <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                    <Checkbox
+                      
+                      status={receiveNewsletter ? 'checked' : 'unchecked'}
+                      onPress={() => setReceiveNewsletter(!receiveNewsletter)}
+                    />
+                    <Text variant="labelSmall" style={{marginLeft: 8}}>
+                      Recieve Emails from our Newsletter
+                    </Text>
+                  </View>
+                </View>
+                {/* End Checkbox Section */}
 
                 <CustomButton
                   primary
                   title="Create an account"
                   onPress={() => handleSubmit()}
-                  disabled={!isValid}
+                  // disabled={!isValid}
                   style={styles.createBtn}
                 />
               </View>

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {Image, ImageBackground, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {Text} from 'react-native-paper';
@@ -12,18 +13,19 @@ export default function VerificationSuccess({
 }: RootStackScreenProps<'AccountVerificationSuccess'>) {
   return (
     <SafeAreaScreen style={styles.container}>
-      <ImageBackground
-        resizeMode="cover"
-        source={require('@/src/assets/images/logo_1.png')}
-        style={styles.imgBackground}
-        imageStyle={styles.img}
-      />
+      <View style={styles.imgContainer}>
+              <ImageBackground
+                resizeMode="cover"
+                source={require('@/src/assets/images/logo_1.png')}
+                style={styles.img1}
+              />
+            </View>
 
       <View>
         <ImageBackground
           source={require('@/src/assets/images/success.png')}
           style={styles.imgBackground2}
-          imageStyle={styles.img}
+          imageStyle={styles.img1}
         />
         <Text style={styles.bigText}>Password Reset Successfully</Text>
         <Text style={styles.smallText}>Redirecting...</Text>

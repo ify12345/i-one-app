@@ -1,89 +1,87 @@
 
-import {StyleSheet} from 'react-native'
+import {Dimensions, StyleSheet} from 'react-native'
 import { Colors } from '@/src/config/colors'
+import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen'
 
-
+const { width: SCREEN_WIDTH } = Dimensions.get('window');
 const styles = StyleSheet.create({
   screen:{
     flex:1,
-    backgroundColor:'#F4F4F4',
-    paddingHorizontal:24
   },
   top:{
     flexDirection:'row',
     justifyContent:'space-between',
-    alignItems:'center',
-    paddingVertical:24
+    alignItems: 'center',
+    marginTop:26,
+    paddingHorizontal:30
   },
-  imgBackground: {
-    width: 200,
-    height: 40,
-    alignSelf: 'center',
-
-  },
-  service:{
-    backgroundColor:'white',
+  search:{
+    borderWidth:1,
+    paddingHorizontal:21,
+    flexDirection:'row',
+    justifyContent:'space-between',
     borderRadius:5,
-    gap:18,
-    justifyContent:'center',
+    marginTop:24,
+    borderColor: Colors.grey,
     alignItems:'center',
-    padding:36,
-    marginVertical:32
+    marginHorizontal:30
   },
-  imgBackground2:{
-    width:118,
-    height:118
+  input:{
+    backgroundColor:'white',
+    borderWidth:0,
+    height:41,
   },
-  btn:{
-    backgroundColor:"#FF7300",
-    color:'white',
-    width:212,
-    
+  card: {
+    width: SCREEN_WIDTH * 0.82,
+    height: SCREEN_WIDTH * 0.4,
+    borderRadius: 8,
+    overflow: 'hidden', 
+    marginRight: 10,
   },
-
-
-  img: {
-    resizeMode: 'contain',
+  image: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
   },
-  serviceList: {
-    padding: 16,
-  },
-  serviceItem: {
+  indicators: {
     flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 16,
-    padding: 12,
-    borderRadius: 8,
-    backgroundColor: '#f8f9fa',
+    justifyContent: 'center',
+    marginVertical: 10,
   },
-  serviceIcon: {
-    width: 40,
-    height: 40,
-    marginRight: 12,
-    borderRadius: 8,
+  indicator: {
+    width: 5,
+    height: 5,
+    borderRadius: 5,
+    marginHorizontal: 5,
   },
-  serviceName: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    flex: 1,
+  view:{
+    flexDirection:'row',
+    justifyContent:'space-between'
   },
-  serviceFee: {
-    fontSize: 14,
-    color: '#6c757d',
+  fixtureCard:{
+    paddingVertical:16,
+    paddingHorizontal:24,
+    gap:5,
+    backgroundColor: 'white', // Add a background color if needed
+    shadowColor: '#585858', // The color of the shadow
+    shadowOffset: { width: 0, height: 2 }, // X and Y offset
+    shadowOpacity: 0.25, // Approximate opacity from the hex value (4D = ~30% opacity)
+    shadowRadius: 10, // Blur radius
+    elevation: 4, // For Android (since shadow properties only work on iOS)
+    padding: 10,
+    borderRadius: 5,
+    marginHorizontal:30,
+    marginBottom:14,
+    marginTop:10
   },
-  emptyState: {
-    alignItems: 'center',
-    marginTop: 50,
-  },
-  emptyImage: {
-    width: 200,
-    height: 200,
-  },
-  emptyText: {
-    marginTop: 16,
-    fontSize: 16,
-    color: '#6c757d',
-  },
+  versus:{
+    flexDirection:'row',
+    alignItems:'center',
+    gap:17,
+    alignSelf:'center',
+    paddingTop:14
+  }
+ 
 })
 
 export default styles

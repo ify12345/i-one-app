@@ -1,5 +1,7 @@
+/* eslint-disable import/extensions */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import {Dimensions, StyleSheet} from 'react-native'
-import { Colors } from '~config/colors'
+
 
 const {width} = Dimensions.get('screen');
 
@@ -14,19 +16,36 @@ const styles = StyleSheet.create({
     // alignItems:'center',
     
   },
+  scrollContent:{
+    flex:1,
+    justifyContent:'space-between',
+    paddingBottom:36
+  },
   imgBackground:{
     width: 130,
     height: 60,
     paddingVertical: 80,
     alignSelf: 'center'
   },
- 
-  fullView: {
-    flex: 1
+  imgContainer: {
+    width: 58,
+    height: 17,
+    resizeMode:'contain',
+    marginBottom:28,
+    alignSelf:'center',
+    marginTop:58
+    // aspectRatio:1,
   },
-  scrollContent: {
-    flexGrow: 1,
-   
+  img1: {
+    height: '100%',
+    width: '100%',
+    // borderWidth: 2,
+    objectFit:'contain'
+  },
+  fullView: {
+    flex: 1,
+    flexDirection:'column',
+    justifyContent:'space-between'
   },
   inputContainer:{
     flexDirection:'row',
@@ -59,7 +78,7 @@ const styles = StyleSheet.create({
     height: 45,
     borderRadius: 5,
     marginHorizontal:5,
-    marginVertical:68,
+    marginVertical:24,
     textAlign: 'center',
     textAlignVertical: 'center',
     fontFamily: 'Avenir-Bold',
@@ -68,8 +87,12 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   btn: {
-    marginTop: 64,
-    marginBottom: 24
+    marginTop: 12,
+    marginBottom: 24,
+    borderWidth: 0.3,
+    height: 52,
+    justifyContent:'center',
+    borderRadius:8
   },
   resendText: {
     flexDirection: 'row',

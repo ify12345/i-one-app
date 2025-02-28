@@ -4,7 +4,7 @@ import {Colors} from '@/src/config/colors';
 
 const styles = StyleSheet.create({
   screen: {
-    paddingTop: 34,
+    paddingVertical: 34,
     paddingHorizontal: 30,
   },
   imgBackground: {
@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
     width: 58,
     height: 17,
     resizeMode:'contain',
+    marginBottom:28
     // aspectRatio:1,
   },
   img1: {

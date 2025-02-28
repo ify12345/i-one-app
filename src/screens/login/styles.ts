@@ -1,21 +1,16 @@
 import {StyleSheet} from 'react-native'
-import { Colors } from '@/src/config/colors'
+
 
 const styles = StyleSheet.create({
   screen: {
-    paddingTop: 54,
-    backgroundColor: Colors.seaShell,
-    display: 'flex',
-    flexDirection:'column',
-    alignItems:'center',
-    
+    paddingVertical: 34,
+    paddingHorizontal: 30,
   },
   imgBackground: {
     width: 179,
     height: 83,
-    marginBottom: 207
+    marginBottom: 207,
   },
-
   btnContainer:{
     paddingTop: 105,
     display: 'flex',
@@ -74,7 +69,20 @@ const styles = StyleSheet.create({
   },
   activeToggleBtn:{
     backgroundColor: '#F0F1F2'
-  }
+  },
+  imgContainer: {
+    width: 58,
+    height: 17,
+    resizeMode:'contain',
+    marginBottom:28
+    // aspectRatio:1,
+  },
+  img1: {
+    height: '100%',
+    width: '100%',
+    // borderWidth: 2,
+    objectFit:'contain'
+  },
 
 })
 

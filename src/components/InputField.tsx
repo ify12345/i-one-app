@@ -192,7 +192,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4, // Blur radius
     elevation: 4, // For Android (since shadow properties only work on iOS)
     padding: 10,
-    borderRadius: 8,
+    borderRadius: 4,
     
   },
   input: {

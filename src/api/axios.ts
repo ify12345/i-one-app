@@ -7,7 +7,7 @@ async function AxiosBase() {
     console.log('Token', token)
     
     const axiosInstance = axios.create({
-      baseURL: 'https://studentdeal.co/api',
+      baseURL: ' https://i-one-server.onrender.com/i-one',
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',

@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {widthPercentageToDP} from 'react-native-responsive-screen';
 
 const styles = StyleSheet.create({
   container: {
@@ -12,11 +13,27 @@ const styles = StyleSheet.create({
     height: 50,
     alignSelf: 'center',
   },
+  imgContainer: {
+    width: 58,
+    height: 17,
+    resizeMode: 'contain',
+    marginBottom: 28,
+    alignSelf: 'center',
+    marginTop: 58,
+    // aspectRatio:1,
+  },
+  img1: {
+    height: '100%',
+    width: '100%',
+    // borderWidth: 2,
+    objectFit: 'contain',
+  },
   imgBackground2: {
-    width: 245,
+    width: widthPercentageToDP(80),
     height: 315,
-    paddingVertical: 48,
-    
+    // borderWidth: 2,
+    // paddingVertical: 48,
+
     alignSelf: 'center',
   },
   bigText: {
@@ -39,11 +56,11 @@ const styles = StyleSheet.create({
     width: 153,
     height: 153,
   },
-  resendText:{
-    textAlign:'center',
+  resendText: {
+    textAlign: 'center',
     paddingTop: 68,
-    fontSize: 15
-  }
+    fontSize: 15,
+  },
 });
 
 export default styles;

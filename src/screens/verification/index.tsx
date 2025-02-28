@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import {
   BackHandler,
   ImageBackground,
@@ -22,13 +23,8 @@ import {
 import {Colors} from '@/src/config/colors';
 import CustomButton from '@/src/components/CustomButton';
 import {useFocusEffect, useRoute} from '@react-navigation/native';
-import {useAppDispatch, useAppSelector,} from '@/src/redux/store';
-import {
-  EmailVerification,
-  PhoneVerification,
-  ResendEmailOtp,
-  ResendPhoneOtp,
-} from '@/src/api/auth';
+import {useAppDispatch, useAppSelector} from '@/src/redux/store';
+import {EmailVerification, PhoneVerification, ResendEmailOtp, ResendPhoneOtp} from '@/src/api/auth';
 import Toast from 'react-native-toast-message';
 import Loader from '@/src/components/loader';
 import styles from './styles';
@@ -54,7 +50,6 @@ export default function AccountVerification({
 
   const [loading, setLoading] = useState(false);
 
-  
   const dispatch = useAppDispatch();
 
   function submit() {
@@ -68,12 +63,12 @@ export default function AccountVerification({
         navigation.navigate('AccountVerificationSuccess');
       })
       .catch(err => {
-        setLoading(false)
+        setLoading(false);
         Toast.show({
           type: 'error',
-          props: {message: err?.detail}
-        })
-      })
+          props: {message: err?.detail},
+        });
+      });
   }
 
   useFocusEffect(
@@ -90,8 +85,6 @@ export default function AccountVerification({
       return () => subscription.remove();
     }, []),
   );
-
-
 
   function handleResendCode() {
     setLoading(true);
@@ -123,23 +116,23 @@ export default function AccountVerification({
           contentContainerStyle={styles.scrollContent}
           showsVerticalScrollIndicator={false}
           bounces={false}>
-          <ImageBackground
-            resizeMode="cover"
-            source={require('@/src/assets/images/logo_1.png')}
-            style={styles.imgBackground}
-          />
-
           <View
             style={[
               {
                 flexDirection: 'column',
-                gap: 10,
                 display: 'flex',
                 alignItems: 'center',
               },
             ]}>
+            <View style={styles.imgContainer}>
+              <ImageBackground
+                resizeMode="cover"
+                source={require('@/src/assets/images/logo_1.png')}
+                style={styles.img1}
+              />
+            </View>
             <Text variant="titleLarge" style={[{color: 'black'}]}>
-            Enter Verification Code
+              Enter Verification Code
             </Text>
             <Text variant="titleSmall" style={[{textAlign: 'center'}]}>
               A One-Time Password has been sent to
@@ -147,7 +140,7 @@ export default function AccountVerification({
                 {/* :&nbsp;{currentMedium === 'email' ? user.email : user.phone_number} */}
               </Text>
             </Text>
-         
+
             <TouchableWithoutFeedback>
               <View style={styles.fullView}>
                 <CodeField
@@ -179,26 +172,29 @@ export default function AccountVerification({
                     </TextInput>
                   )}
                 />
-                <TouchableOpacity hitSlop={10} onPress={() => handleResendCode()}>
-                  <Text variant="bodySmall" style={[styles.resendText, {color: Colors.black}]}>
-                    Didn't get the code?
-                    <Text style={{color: Colors.paleGreen}}>&nbsp;Click to resend</Text>
-                  </Text>
-                </TouchableOpacity>
-                <CustomButton
-                  primary
-                  style={styles.btn}
-                  title="Verify"
-                  // disabled={!value || value.length < CELL_COUNT}
-                  onPress={() => navigation.navigate('VerificationSuccess')}
-                />
-                <TouchableOpacity hitSlop={10} onPress={() => navigation.goBack()}>
-                  <Text variant="bodySmall" style={[styles.resendText, {color: Colors.black}]}>
-                    Cancel
-                  </Text>
-                </TouchableOpacity>
               </View>
             </TouchableWithoutFeedback>
+          </View>
+
+          <View>
+            <CustomButton
+              primary
+              title="Verify"
+              // disabled={!value || value.length < CELL_COUNT}
+              onPress={() => navigation.navigate('VerificationSuccess')}
+            />
+            <TouchableOpacity style={styles.btn} hitSlop={10} onPress={() => navigation.goBack()}>
+              <Text variant="bodySmall" style={[styles.resendText, {color: Colors.black}]}>
+                Cancel
+              </Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity hitSlop={10} onPress={() => handleResendCode()}>
+              <Text variant="bodySmall" style={[styles.resendText, {color: Colors.black}]}>
+                Didn't get the code?
+                <Text style={{color: Colors.paleGreen}}>&nbsp;Click to resend</Text>
+              </Text>
+            </TouchableOpacity>
           </View>
         </ScrollView>
       </KeyboardAvoidingView>

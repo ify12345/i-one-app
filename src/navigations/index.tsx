@@ -68,7 +68,7 @@ export default function RootNavigator() {
       screenOptions={{
         headerShown: false,
       }}>
-      {isAuthenticated && (
+      {!isAuthenticated && (
         <RootStack.Group>
           <RootStack.Screen name="BottomTab" component={BottomTab} />
           <RootStack.Screen name="EditBasicInfo" component={EditBasicInfo} />
@@ -76,7 +76,7 @@ export default function RootNavigator() {
           <RootStack.Screen name="Notification" component={Notifications} />
         </RootStack.Group>
       )}
-      {!isAuthenticated && (
+      {isAuthenticated && (
         <RootStack.Group>
           <RootStack.Screen name="HomeTab" component={Onboarding} />
           <RootStack.Screen name="Login" component={Login} />

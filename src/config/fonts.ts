@@ -31,8 +31,8 @@ const fontConfig: MD3Typescale = {
     fontFamily: 'Nunito_400Regular',
     fontWeight: '400',
     letterSpacing: 0,
-    lineHeight: 25.2,
-    fontSize: 16
+    lineHeight: 10,
+    fontSize: 10
   },
   labelMedium: {
     fontFamily: 'Nunito_400Regular',
@@ -99,16 +99,16 @@ const fontConfig: MD3Typescale = {
   },
   displayMedium: {
     fontFamily: 'Avenir-Medium',
-    fontWeight: '500',
+    fontWeight: '400',
     letterSpacing: 0,
     lineHeight: 15,
-    fontSize: 10
+    fontSize: 14
   },
   displayLarge: {
     fontFamily: 'Nunito_700Bold',
-    fontWeight: '700',
+    fontWeight: '600',
     letterSpacing: 0,
-    lineHeight: 27,
+    lineHeight: 23,
     fontSize: 20
   }
 }

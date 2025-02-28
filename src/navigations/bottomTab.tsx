@@ -3,18 +3,15 @@ import { BottomTabBarProps, createBottomTabNavigator } from "@react-navigation/b
 import { HomeTabParamList } from "@/src/types/navigation";
 import { useTheme, Text } from "react-native-paper";
 import { View, StyleSheet, Platform, TouchableOpacity } from "react-native";
-
-
-
-
-import BenefitsIcon from "../assets/svg/BenefitsIcon";
 import PaymentIcon from "../assets/svg/PaymentIcon";
 import AccountIcon from "../assets/svg/AccountIcon";
 import HomeScreen from "../screens/home";
-import BenefitScreen from "../screens/benefit";
 import PaymentScreen from "../screens/payment";
 import AccountScreen from "../screens/account";
 import HomeIcon from "../assets/svg/HomeIcon";
+import SchedulesIcon from "../assets/svg/SchedulesIcon";
+import ScheduleScreen from "../screens/schedules";
+import TournamentsIcon from "../assets/svg/PaymentIcon";
 
 
 const HomeTab = createBottomTabNavigator<HomeTabParamList>()
@@ -38,7 +35,6 @@ const styles = StyleSheet.create({
   },
   tabItem: {
     alignSelf: 'center',
-   
   },
 });
 
@@ -50,11 +46,11 @@ const renderIcon = ({route, isFocused}: {route: string; isFocused: boolean}) => 
   if (route === 'Home') {
     return <HomeIcon color={iconColor} />;
   }
-  if (route === 'Benefits') {
-    return <BenefitsIcon color={iconColor} />;
+  if (route === 'Schedules') {
+    return <SchedulesIcon color={iconColor} />;
   }
-  if (route === 'Payment') {
-    return <PaymentIcon color={iconColor} fill={iconFill} />;
+  if (route === 'Tournaments') {
+    return <TournamentsIcon color={iconColor} fill={iconFill} />;
   }
   if (route === 'Account') {
     return <AccountIcon color={iconColor} />;
@@ -130,8 +126,8 @@ function BottomTab() {
       }}
     >
       <HomeTab.Screen name='Home' component={HomeScreen} options={{title:'Home'}} />
-      <HomeTab.Screen name='Benefits' component={BenefitScreen} options={{title: 'Benefits'}} />
-      <HomeTab.Screen name='Payment' component={PaymentScreen} options={{title: 'Payment'}} />
+      <HomeTab.Screen name='Schedules' component={ScheduleScreen} options={{title: 'Schedules'}} />
+      <HomeTab.Screen name='Tournaments' component={PaymentScreen} options={{title: 'Tournaments'}} />
       <HomeTab.Screen name='Account' component={AccountScreen} options={{title: 'Profile'}} />
     </HomeTab.Navigator>
   )

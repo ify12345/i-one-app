@@ -22,7 +22,21 @@ const styles = StyleSheet.create({
     
     alignSelf: 'center',
   },
-
+  imgContainer: {
+    width: 58,
+    height: 17,
+    resizeMode:'contain',
+    marginBottom:28,
+    alignSelf:'center',
+    marginTop:58
+    // aspectRatio:1,
+  },
+  img1: {
+    height: '100%',
+    width: '100%',
+    // borderWidth: 2,
+    objectFit:'contain'
+  },
   btnContainer: {
     paddingTop: 105,
     display: 'flex',
@@ -70,6 +84,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
+    
   },
   toggleBtn: {
     display: 'flex',
