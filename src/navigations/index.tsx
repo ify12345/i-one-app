@@ -20,6 +20,7 @@ import Search from '../screens/search';
 import Notifications from '../screens/notifications';
 import Login from '../screens/login';
 import SignUp from '../screens/signup';
+import Fixtures from '../screens/fixtures';
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
@@ -71,6 +72,7 @@ export default function RootNavigator() {
       {!isAuthenticated && (
         <RootStack.Group>
           <RootStack.Screen name="BottomTab" component={BottomTab} />
+          <RootStack.Screen name="Fixtures" component={Fixtures} />
           <RootStack.Screen name="EditBasicInfo" component={EditBasicInfo} />
           <RootStack.Screen name="Search" component={Search} />
           <RootStack.Screen name="Notification" component={Notifications} />

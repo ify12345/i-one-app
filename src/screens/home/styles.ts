@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import {Dimensions, StyleSheet} from 'react-native'
 import { Colors } from '@/src/config/colors'

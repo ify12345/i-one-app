@@ -7,6 +7,7 @@ import FilterIcon from '@/src/assets/svg/FilterSvg';
 import PolygonShape from '@/src/components/PolygonComponent';
 import GoArrow from '@/src/assets/svg/GoArrow';
 import styles from './styles';
+import { useNavigation } from '@react-navigation/native';
 
 const DATA = [
   {
@@ -43,33 +44,35 @@ const renderItem = ({item}) => (
     <ImageBackground source={item.image} style={styles.image} />
   </View>
 );
-const renderFixtures = ({ item }) => (
-  <TouchableOpacity style={styles.fixtureCard}>
-    <View style={styles.view}>
-      <Text style={{ color: 'black' }} variant="displayMedium">
-        {item.time}
-      </Text>
-      <Text style={{ color: 'black' }} variant="displayMedium">
-        {item.type}
-      </Text>
-      <GoArrow />
-    </View>
-    <View style={styles.versus}>
-      <PolygonShape centerContent="TN" bottomContent="Team Name" />
-      <Text style={{ color: 'black' }} variant="displayMedium">
-        VS
-      </Text>
-      <PolygonShape centerContent="TN" bottomContent="Team Name" />
-    </View>
-  </TouchableOpacity>
-);
+
 
 export default function HomeScreen() {
   const {colors} = useTheme();
   const [carouselRef, setCarouselRef] = React.useState(null);
-  const [currentIndex, setCurrentIndex] = React.useState(0); // State to track the current index
+  const [currentIndex, setCurrentIndex] = React.useState(0); 
+  const navigation = useNavigation()
 
-  // Function to handle end of momentum scroll, capturing the current index
+  const renderFixtures = ({ item }) => (
+    <TouchableOpacity style={styles.fixtureCard} onPress={()=>navigation.navigate('Fixtures')}>
+      <View style={styles.view}>
+        <Text style={{ color: 'black' }} variant="displayMedium">
+          {item.time}
+        </Text>
+        <Text style={{ color: 'black' }} variant="displayMedium">
+          {item.type}
+        </Text>
+        <GoArrow />
+      </View>
+      <View style={styles.versus}>
+        <PolygonShape centerContent="TN" bottomContent="Team Name" />
+        <Text style={{ color: 'black' }} variant="displayMedium">
+          VS
+        </Text>
+        <PolygonShape centerContent="TN" bottomContent="Team Name" />
+      </View>
+    </TouchableOpacity>
+  );
+
   const handleScrollEnd = event => {
     const index = Math.floor(event.nativeEvent.contentOffset.x / (ITEM_WIDTH + ITEM_MARGIN));
     setCurrentIndex(index);
