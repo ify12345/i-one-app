@@ -5,6 +5,7 @@ import {Text, useTheme} from 'react-native-paper';
 import SquadIcon from '@/src/assets/svg/Squad';
 import PitchIcon from '@/src/assets/svg/PitchSvg';
 import PlayerCard from './PlayerCard';
+import Pitch from './Pitch';
 
 const squadList = [
   {
@@ -104,6 +105,12 @@ export default function Lineups() {
           contentContainerStyle={{ paddingBottom: 20 }}
         />
       )}
+
+      {
+        lineups === 'squad' && (
+          <Pitch/>
+        )
+      }
     </View>
   );
 }

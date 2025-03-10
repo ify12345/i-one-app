@@ -1,3 +1,4 @@
+/* eslint-disable import/order */
 import React from 'react';
 import {Dimensions, FlatList, ImageBackground, TouchableOpacity, View} from 'react-native';
 import {Text, TextInput, useTheme} from 'react-native-paper';

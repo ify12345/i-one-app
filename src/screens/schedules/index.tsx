@@ -7,13 +7,18 @@ import React, { useEffect } from 'react';
 import SafeAreaScreen from '@/src/components/SafeAreaScreen';
 import TopBar from '@/src/components/TopBar';
 import styles from './styles';
+import CalendarIcon from '@/src/assets/svg/Calendar';
 
 
 export default function ScheduleScreen() {
 
   return (
     <SafeAreaScreen style={styles.screen}>
-      <TopBar/>
+    <View style={styles.topNav}>
+      <Text variant="bodyLarge" style={{color:'black'}}>Match Schedule</Text>
+
+      <CalendarIcon/>
+    </View>
       
 
     </SafeAreaScreen>

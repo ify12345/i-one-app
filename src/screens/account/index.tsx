@@ -34,8 +34,8 @@ export default function AccountScreen() {
   }
   return (
     <SafeAreaScreen style={styles.screen}>
-      <TopBar/>
-      <ScrollView>
+     
+      <ScrollView style={{marginTop:23}}>
         <Text variant="titleLarge" style={{color: 'black'}}>
           My Profile
         </Text>

@@ -81,6 +81,12 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#6c757d',
   },
+  topNav:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center',
+    paddingTop:44
+  }
 });
 
 export default styles;
