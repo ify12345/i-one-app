@@ -14,7 +14,7 @@ export const Colors = {
   backDrop: 'rgba(0,0,0,0.25)',
   errorTint: '#F2DEDF',
   darkLiver: '#4E4E4E',
-  grey: '#878786'
+  grey: '#ECECEC'
 }
 
 export const lightColors = {
@@ -25,7 +25,7 @@ export const lightColors = {
   tertiary: Colors.seaShell,
   onPrimaryContainer: Colors.black,
   onBackground: Colors.richBlack,
-  surface: Colors.cultured,
+  surface: Colors.grey,
   error: Colors.jasper,
   dark: Colors.black,
   // tertiaryContainer: '',

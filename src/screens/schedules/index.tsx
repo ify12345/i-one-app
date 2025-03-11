@@ -8,6 +8,7 @@ import SafeAreaScreen from '@/src/components/SafeAreaScreen';
 import TopBar from '@/src/components/TopBar';
 import styles from './styles';
 import CalendarIcon from '@/src/assets/svg/Calendar';
+import DateScroller from '@/src/components/DateScroller';
 
 
 export default function ScheduleScreen() {
@@ -19,7 +20,7 @@ export default function ScheduleScreen() {
 
       <CalendarIcon/>
     </View>
-      
+      <DateScroller/>
 
     </SafeAreaScreen>
   );
