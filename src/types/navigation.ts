@@ -30,6 +30,7 @@ export type RootStackParamList = {
   Chat: undefined;
   PersonalInfo: undefined;
   BottomTab: undefined;
+  tournamentDetail: undefined;
 };
 
 export type HomeTabParamList = {

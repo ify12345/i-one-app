@@ -18,7 +18,7 @@ const DateScroller = () => {
       height:54,
       width:54,
       marginHorizontal: 18,
-      
+      padding:15,
       backgroundColor: colors.surface,
       justifyContent: 'center',
       alignItems: 'center',
@@ -35,11 +35,11 @@ const DateScroller = () => {
     view:{
         flexDirection:'column',
         alignItems:'center',
-        height: heightPercentageToDP(14), 
-        marginVertical: 25,
+        height: heightPercentageToDP(12), 
+        marginVertical: 20,
         gap:20,
         borderBottomColor: colors.surface,
-        borderBottomWidth:2,
+        // borderBottomWidth:2,
     }
   });
   const generateDates = () => {
@@ -64,7 +64,7 @@ const DateScroller = () => {
               style={[styles.polygon, isActive && {backgroundColor: colors.primary}]}
               onPress={() => setSelectedDate(item)}>
               <Text variant="labelLarge" style={[styles.dateText, isActive && {color: '#FFF'}]}>
-                {moment(item).format('DD')}
+                {moment(item).format('D')}
               </Text>
             </TouchableOpacity>
             <Text style={{color:'black'}}>{moment(item).format('dd')}</Text>

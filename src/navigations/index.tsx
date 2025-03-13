@@ -21,6 +21,7 @@ import Notifications from '../screens/notifications';
 import Login from '../screens/login';
 import SignUp from '../screens/signup';
 import Fixtures from '../screens/fixtures';
+import TournamentDetails from '../screens/tournament-details';
 
 const RootStack = createStackNavigator<RootStackParamList>();
 
@@ -73,6 +74,7 @@ export default function RootNavigator() {
         <RootStack.Group>
           <RootStack.Screen name="BottomTab" component={BottomTab} />
           <RootStack.Screen name="Fixtures" component={Fixtures} />
+          <RootStack.Screen name="tournamentDetail" component={TournamentDetails} />
           <RootStack.Screen name="EditBasicInfo" component={EditBasicInfo} />
           <RootStack.Screen name="Search" component={Search} />
           <RootStack.Screen name="Notification" component={Notifications} />

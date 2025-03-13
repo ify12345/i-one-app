@@ -3,15 +3,17 @@ import { BottomTabBarProps, createBottomTabNavigator } from "@react-navigation/b
 import { HomeTabParamList } from "@/src/types/navigation";
 import { useTheme, Text } from "react-native-paper";
 import { View, StyleSheet, Platform, TouchableOpacity } from "react-native";
-import PaymentIcon from "../assets/svg/PaymentIcon";
+
 import AccountIcon from "../assets/svg/AccountIcon";
 import HomeScreen from "../screens/home";
-import PaymentScreen from "../screens/payment";
+
 import AccountScreen from "../screens/account";
 import HomeIcon from "../assets/svg/HomeIcon";
 import SchedulesIcon from "../assets/svg/SchedulesIcon";
 import ScheduleScreen from "../screens/schedules";
 import TournamentsIcon from "../assets/svg/PaymentIcon";
+import TournamentScreen from "../screens/tournament";
+
 
 
 const HomeTab = createBottomTabNavigator<HomeTabParamList>()
@@ -127,7 +129,7 @@ function BottomTab() {
     >
       <HomeTab.Screen name='Home' component={HomeScreen} options={{title:'Home'}} />
       <HomeTab.Screen name='Schedules' component={ScheduleScreen} options={{title: 'Schedules'}} />
-      <HomeTab.Screen name='Tournaments' component={PaymentScreen} options={{title: 'Tournaments'}} />
+      <HomeTab.Screen name='Tournaments' component={TournamentScreen} options={{title: 'Tournaments'}} />
       <HomeTab.Screen name='Account' component={AccountScreen} options={{title: 'Profile'}} />
     </HomeTab.Navigator>
   )
