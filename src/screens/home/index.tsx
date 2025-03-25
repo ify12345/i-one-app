@@ -86,7 +86,7 @@ export default function HomeScreen() {
           <Text style={{color: 'black'}} variant="displayMedium">
             Hey, Kevin👋
           </Text>
-          <Text style={{color: 'black', marginTop: 7}} variant="displayLarge">
+          <Text style={styles.cont} variant="displayLarge">
             It’s Matchday!
           </Text>
         </View>

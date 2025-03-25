@@ -8,7 +8,6 @@ import {createStackNavigator} from '@react-navigation/stack';
 // import {useAppSelector} from '~redux/store';
 import Onboarding from '../screens/onboard';
 import {RootStackParamList} from '../types/navigation';
-import AuthScreens from '../screens/auth';
 import ForgotPassword from '../screens/forgot-password';
 import AccountVerification from '../screens/verification';
 import ResetPassword from '../screens/reset-password';

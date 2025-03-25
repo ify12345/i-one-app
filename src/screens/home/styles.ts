@@ -16,6 +16,9 @@ const styles = StyleSheet.create({
     marginTop:26,
     paddingHorizontal:30
   },
+  cont:{
+    color: 'black', marginTop: 7
+  },
   search:{
     borderWidth:1,
     paddingHorizontal:21,
@@ -78,9 +81,9 @@ const styles = StyleSheet.create({
   versus:{
     flexDirection:'row',
     alignItems:'center',
-    gap:17,
+    gap: 17,
     alignSelf:'center',
-    paddingTop:14
+    paddingTop: 14
   }
  
 })

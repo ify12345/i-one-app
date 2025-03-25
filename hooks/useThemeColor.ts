@@ -1,3 +1,6 @@
+/* eslint-disable import/extensions */
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-else-return */
 /**
  * Learn more about light and dark modes:
  * https://docs.expo.dev/guides/color-schemes/

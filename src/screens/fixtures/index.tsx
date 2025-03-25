@@ -17,6 +17,8 @@ export default function Fixtures() {
   return (
     <SafeAreaScreen style={styles.screen}>
       <TopBar />
+
+      
       <View style={styles.versus}>
         <PolygonShape centerContent="TN" bottomContent="Team Name" />
         <Text style={{ color: 'black', borderTopWidth: 1, paddingTop: 6 }} variant="displayMedium">

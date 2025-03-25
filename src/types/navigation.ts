@@ -31,6 +31,10 @@ export type RootStackParamList = {
   PersonalInfo: undefined;
   BottomTab: undefined;
   tournamentDetail: undefined;
+  Fixtures: undefined;
+  EditBasicInfo: undefined;
+  Notification: undefined;
+  VerificationSuccess: undefined;
 };
 
 export type HomeTabParamList = {

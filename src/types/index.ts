@@ -77,8 +77,6 @@ export interface Language {
   name: string;
 }
 
-export type Service = 'home_service' | 'walk_in'
-
 export interface User {
   id?: number
   outletId?: number
@@ -146,7 +144,6 @@ export type Account = {
   accountName: string
 }
 
-export type UpdateState = 'checking' | 'available' | 'downloading' | 'reload'
 
 export type Bank = {
   id: number;

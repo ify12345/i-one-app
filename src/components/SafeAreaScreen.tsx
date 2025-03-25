@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 import React, { ReactNode } from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'

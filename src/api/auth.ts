@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable import/order */
 /* eslint-disable import/no-cycle */
 /* eslint-disable import/prefer-default-export */
@@ -28,7 +29,10 @@ export const register = createAsyncThunk<
   async (payload, thunkAPI) => {
     try {
       console.log('pay', payload.values);
+
       const Axios = await AxiosBase();
+
+      
       const { data } = await Axios.post('/register', payload.values);
 
       console.log('data', data);

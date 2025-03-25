@@ -8,7 +8,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
 interface State {
   user: User;
-  // profile: object;
+  profile: object;
   isAuthenticated: boolean;
   isVerified: boolean;
   isPhoneVerified: boolean;

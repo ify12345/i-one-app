@@ -1,6 +1,8 @@
+/* eslint-disable import/extensions */
 import { Platform, ToastAndroid } from "react-native";
 import ToastComponent from 'react-native-tiny-toast'
-import { Colors } from "~config/colors";
+import { Colors } from "../config/colors";
+
 
 export default function Toast(message: string) {
   if (Platform.OS === 'android') {

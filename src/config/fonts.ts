@@ -107,7 +107,7 @@ const fontConfig: MD3Typescale = {
   displayLarge: {
     fontFamily: 'Nunito_700Bold',
     fontWeight: '600',
-    letterSpacing: 0,
+    letterSpacing: -2,
     lineHeight: 23,
     fontSize: 20
   }
