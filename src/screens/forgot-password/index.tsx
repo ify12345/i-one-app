@@ -85,6 +85,8 @@ export default function ForgotPassword() {
     email: yup.string().email(t('Enter a valid email')).required(t('Email is required')),
   });
 
+
+  
   return (
     <SafeAreaScreen style={styles.screen}>
       <KeyboardAvoidingView style={styles.fullView} behavior="height">
