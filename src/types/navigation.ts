@@ -1,6 +1,5 @@
-import {CompositeScreenProps} from '@react-navigation/native';
 import {StackScreenProps} from '@react-navigation/stack';
-import {AccountType, Schedule, Service} from '@/src/types';
+import {AccountType} from '@/src/types';
 
 export type RootStackParamList = {
   Onboard: undefined;
@@ -45,12 +44,6 @@ export type HomeTabParamList = {
   Account: undefined;
 };
 
-export type ScheduleStackParamList = {
-  Schedule: undefined;
-  CreateSchedule: {service: Service; date?: string};
-  ScheduleDetail: {schedule: Schedule};
-  ScheduleBreak: {date: string; isHomeService: boolean};
-};
 
 export type ProfileStackParamList = {
   Profile: undefined;
@@ -64,30 +57,6 @@ export type ProfileStackParamList = {
 export type RootStackScreenProps<T extends keyof RootStackParamList> = StackScreenProps<
   RootStackParamList,
   T
->;
-
-export type HomeStackScreenProps<T extends keyof HomeStackParamList> = CompositeScreenProps<
-  StackScreenProps<HomeStackParamList, T>,
-  CompositeScreenProps<
-    DrawerScreenProps<DrawerParamList>,
-    RootStackScreenProps<keyof RootStackParamList>
-  >
->;
-
-export type ScheduleStackScreenProps<T extends keyof ScheduleStackParamList> = CompositeScreenProps<
-  StackScreenProps<ScheduleStackParamList, T>,
-  CompositeScreenProps<
-    DrawerScreenProps<DrawerParamList>,
-    RootStackScreenProps<keyof RootStackParamList>
-  >
->;
-
-export type ProfileStackScreenProps<T extends keyof ProfileStackParamList> = CompositeScreenProps<
-  StackScreenProps<ProfileStackParamList, T>,
-  CompositeScreenProps<
-    DrawerScreenProps<DrawerParamList>,
-    RootStackScreenProps<keyof RootStackParamList>
-  >
 >;
 
 declare global {
